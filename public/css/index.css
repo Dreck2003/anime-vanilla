@@ -1,0 +1,56 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  /* --- Colors --- */
+  --clr-dark: 0 0% 13%;
+  --clr-light: 231 77% 90%;
+  --clr-accent: 74 84% 71%;
+  --clr-white: 0 0% 100%;
+
+  /* --- Font-sizes --- */
+  --fs-900: 6rem;
+  --fs-800: 4.7rem;
+  --fs-700: 3rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  /* --- Font-sizes --- */
+  --ff-montserrat: "Montserrat", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+}
+#app {
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*  Permite ser entendibles para videntes   */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* add line*/
+  border: 0;
+}

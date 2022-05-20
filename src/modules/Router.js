@@ -1,6 +1,7 @@
 class NewRouter {
   constructor() {
     this.pages = [];
+    this.childs = [];
     this.root = document.body;
   }
 
@@ -23,19 +24,21 @@ class NewRouter {
    */
   routes(root, pages) {
     if (typeof root == "string") {
-      this.root = document.getElementById(root);
+      this.root = document.querySelector(root);
     } else if (root instanceof HTMLElement) {
       this.root = root;
     }
+    this.childs = Array.from(this.root.children);
     this.pages = pages;
     this.renderTemplate();
     window.onpopstate = () => {
-      Router.renderTemplate();
+      this.renderTemplate();
     };
   }
 
   renderTemplate() {
-    const path = window.location.pathname;
+    // console.log("Los hijos son: ", this.childs);
+    const path = window.location.pathname; // Este es la url que renderiza el template
     const childrenLength = this.root.children.length;
     const pages = this.pages;
 
@@ -49,14 +52,15 @@ class NewRouter {
       } else {
         element = component;
       }
+      // console.log("El componente es: ", element);
 
       if (url === path) {
         if (childrenLength) {
-          // this.root.removeChild(this.root.children[0]);
-          // this.root.appendChild(element);
+          // Si tiene hijos:
+          // console.log("El padre tiene hijos: ", childrenLength);
           replace(this.root, element);
         } else {
-          // this.root.appendChild(element);
+          // console.log("El padre no tiene hijos");
           replace(this.root, element);
         }
         return true;
@@ -70,8 +74,14 @@ class NewRouter {
     //Si no existe el componente por defecto || 404:
 
     if (!findDefaultView) {
-      if (childrenLength) {
+      if (!childrenLength) {
         this.root.removeChild(this.root.children[0]);
+        // this.root.appendChild()
+      } else {
+        let children = Array.from(this.root.children).slice(this.childs.length);
+        children.forEach((child) => {
+          this.root.removeChild(child);
+        });
       }
       return false;
     }

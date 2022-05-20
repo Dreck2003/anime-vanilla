@@ -16,7 +16,7 @@ export class Component {
    *
    * @param {HTMLElement | string} parent HTMLElement for add
    * @param {options} props Props for state to children
-   * @returns `HTMLElement` The return of the function component
+   * @returns {HTMLElement} The return of the function component
    */
   render(parent, props = null) {
     this.parent =

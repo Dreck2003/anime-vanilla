@@ -12,21 +12,25 @@ export class BoxElement {
   }
 
   /**
-   *
-   * @param {string | BoxElement | HTMLElement} child Received child for append to parent
+   * @param {string | BoxElement | HTMLElement} childs Received child for append to parent
    */
-  addChild(child) {
-    if (typeof child === "string") {
-      this.core.innerHTML = child;
-    } else if (child instanceof BoxElement) {
-      this.core.appendChild(child.core);
-    } else if (child instanceof HTMLElement) {
-      this.core.appendChild(child);
+  addChilds(childs) {
+    if (typeof childs === "string") {
+      this.core.innerHTML = childs;
+      return;
+    }
+    if (Array.isArray(childs)) {
+      childs.forEach((child) => {
+        if (child instanceof BoxElement) {
+          this.core.appendChild(child.core);
+        } else if (child instanceof HTMLElement) {
+          this.core.appendChild(child);
+        }
+      });
     }
   }
 
   /**
-   *
    * @param {any} styles Received object with `css properties`
    */
   addStyles(styles) {
@@ -39,6 +43,9 @@ export class BoxElement {
     };
   }
 
+  /**
+   * @param {Function} cb Callback for add event and add method removeClick
+   */
   addClick(cb) {
     const evento = cb;
     this.core.addEventListener("click", evento);
@@ -65,20 +72,26 @@ export class BoxElement {
       this.core.addEventListener("mouseover", callback);
     }
   }
+
+  /**
+   *
+   * @param {string} type ClassList type: `add | remove `
+   * @param {Array<string>} classNames Array of the classes
+   */
+  class(type, classNames) {
+    switch (type) {
+      case "add":
+        classNames.forEach((clase) => {
+          this.core.classList.add(clase);
+        });
+        break;
+      case "remove":
+        classNames.forEach((clase) => {
+          this.core.classList.remove(clase);
+        });
+    }
+  }
 }
-
-// class Link extends BoxElement {
-//   constructor(type) {
-//     super(type);
-//   }
-
-//   to(URL) {
-//     this.core.addEventListener("click", (event) => {
-//       event.preventDefault();
-//       Router.navigate(URL);
-//     });
-//   }
-// }
 
 export class DOM {
   static create(type) {
