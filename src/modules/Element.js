@@ -28,6 +28,12 @@ export class BoxElement {
           this.core.appendChild(child);
         }
       });
+    } else {
+      if (childs instanceof BoxElement) {
+        this.core.appendChild(childs.core);
+      } else if (childs instanceof HTMLElement) {
+        this.core.appendChild(childs);
+      }
     }
   }
 
@@ -77,9 +83,9 @@ export class BoxElement {
   /**
    *
    * @param {string} type ClassList type: `add | remove `
-   * @param {Array<string>} classNames Array of the classes
+   * @param {string} classNames Array of the classes
    */
-  class(type, classNames) {
+  class(type = "add", classNames) {
     if (!classNames) return;
     switch (type) {
       case "add":
@@ -91,6 +97,19 @@ export class BoxElement {
         classNames.split(" ").forEach((clase) => {
           this.core.classList.remove(clase);
         });
+    }
+  }
+
+  /**
+   * @param {boolean} isRewrite It is a boolean that indicates if the  content of the text is rewrite
+   * @param {string} text
+   */
+  text(isRewrite = false, text) {
+    if (isRewrite) {
+      this.core.textContent = text;
+      console.log("Se reescribe", this.core.textContent);
+    } else {
+      this.core.textContent += text;
     }
   }
 }

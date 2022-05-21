@@ -1,0 +1,14 @@
+/*---------------------------*/
+/*       Home Component      */
+/*---------------------------*/
+
+.home_app {
+  width: 100%;
+  height: inherit;
+  border: 2px dashed dodgerblue;
+  padding-inline: 1em;
+}
+
+.group {
+  width: 100%;
+}

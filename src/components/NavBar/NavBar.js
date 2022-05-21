@@ -1,3 +1,4 @@
+import "./nav.components.css";
 import { DOM } from "../../modules/Element";
 import { Component } from "../../modules/ComponentFunc";
 
