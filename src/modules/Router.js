@@ -29,7 +29,7 @@ class NewRouter {
       this.root = root;
     }
     this.childs = Array.from(this.root.children);
-    this.pages = pages;
+    this.pages = pages ? pages : [];
     this.renderTemplate();
     window.onpopstate = () => {
       this.renderTemplate();

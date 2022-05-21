@@ -9,6 +9,15 @@
   font-family: "Montserrat", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
 :root {
   /* --- Colors --- */
   --clr-dark: 0 0% 13%;

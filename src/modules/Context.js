@@ -1,4 +1,8 @@
 export class Context {
+  /**
+   *
+   * @param {{}} globalState Properties in state
+   */
   constructor(globalState) {
     this.state = globalState;
     this.suscribes = [];

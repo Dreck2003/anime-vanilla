@@ -16,7 +16,8 @@ export class BoxElement {
    */
   addChilds(childs) {
     if (typeof childs === "string") {
-      this.core.innerHTML = childs;
+      // this.core.innerHTML = childs;
+      this.core.insertAdjacentHTML("beforeend", childs);
       return;
     }
     if (Array.isArray(childs)) {
@@ -79,14 +80,15 @@ export class BoxElement {
    * @param {Array<string>} classNames Array of the classes
    */
   class(type, classNames) {
+    if (!classNames) return;
     switch (type) {
       case "add":
-        classNames.forEach((clase) => {
+        classNames.split(" ").forEach((clase) => {
           this.core.classList.add(clase);
         });
         break;
       case "remove":
-        classNames.forEach((clase) => {
+        classNames.split(" ").forEach((clase) => {
           this.core.classList.remove(clase);
         });
     }

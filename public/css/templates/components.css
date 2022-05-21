@@ -1,0 +1,28 @@
+/*---------------------------*/
+/*        Nav Component      */
+/*---------------------------*/
+
+.navbar-app {
+  width: 100%;
+  height: 50px;
+  border: 2px solid red;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  align-items: center;
+  justify-items: center;
+}
+
+.navbar-app > img {
+  height: 47px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.navbar-app > * {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-app > a:hover {
+  /* opacity: 0.3; */
+  color: white;
+}
