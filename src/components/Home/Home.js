@@ -7,7 +7,12 @@ import { AnimeState } from "../../state/animes";
 const FHome = () => {
   const $wrapper = DOM.create("main");
   $wrapper.class("add", "home_app");
-
+  const $image = DOM.create("div");
+  $image.class("add", "home_img");
+  $image.addChilds(`
+    <div>BIENVENIDOS</div>
+  `);
+  $wrapper.addChilds($image);
   $wrapper.addChilds(
     Group.render($wrapper, {
       title: "animes",

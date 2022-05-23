@@ -12,6 +12,7 @@
   left: 0;
   right: 0;
   z-index: 10;
+  position: fixed;
 }
 
 .navbar-app > img {
@@ -31,6 +32,12 @@
 
 .navbar-app > a:hover {
   /* opacity: 0.3; */
+  background-color: hsl(var(--clr-dark));
+  color: white;
+}
+
+/* navigation  */
+.navigation {
   background-color: hsl(var(--clr-dark));
   color: white;
 }

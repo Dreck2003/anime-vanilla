@@ -19,7 +19,7 @@
 .card_img:hover::after {
   filter: blur(-1px);
   background-color: hsl(var(--clr-dark) / 0.3);
-  content: "VER MAS";
+  content: "SEE MORE";
 }
 .card_img::after {
   content: "";
@@ -27,9 +27,14 @@
   top: 0;
   left: 0;
   bottom: 0;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
   right: 0;
-  transition: background-color 500ms ease-in content 500ms ease;
+  transition: background-color 500ms ease-in;
   /* background-color: rgba(224, 117, 117, 0.089); */
   /* background-color: hsl(var(--clr-dark));  */
 }
@@ -38,7 +43,7 @@
   object-fit: cover;
   object-position: center;
   height: 230px;
-  transition: transform 2s ease;
+  transition: transform 1s ease;
 }
 
 .card_container > span {

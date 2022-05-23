@@ -9,11 +9,9 @@ const FGroup = ({ title, items }) => {
   const $wrapper = DOM.create("ul");
   $wrapper.class("add", "group grid");
 
-  // console.log({ title, items });
-
   const $Title = DOM.link(`/${title}`);
   $Title.addChilds(Title(`${title}`));
-  $Title.class("add", "bg-accent bold");
+  $Title.class("add", "bg-accent bold ");
 
   const $container = DOM.create("div");
   $container.class("add", "all-items");
@@ -27,12 +25,14 @@ const FGroup = ({ title, items }) => {
         "genres",
         "title_english",
         "title",
+        "mal_id",
       ]);
       // console.log(props);
       let $item = Anime.render($container, {
         img: props.images.jpg.image_url || props.images.jpg.large_image_url,
         genres: props.genres.map((gen) => gen.name),
         name: props.title_english || props.title,
+        id: props.mal_id,
       });
       $wrapper.addChilds($item);
     });
