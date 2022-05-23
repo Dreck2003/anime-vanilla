@@ -1,29 +1,11 @@
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  font-family: "Montserrat", sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
 :root {
   /* --- Colors --- */
-  --clr-dark: 0 0% 13%;
-  --clr-light: 231 77% 90%;
+
   --clr-accent: 74 84% 71%;
-  --clr-white: 0 0% 100%;
+  --clr-dark: 223 34% 34%;
+  --clr-ligth: 186 56% 55%;
+  --clr-white: 191 0% 100%;
+  --clr-green: 135 54% 43%;
 
   /* --- Font-sizes --- */
   --fs-900: 6rem;
@@ -39,17 +21,84 @@ li {
   --ff-montserrat: "Montserrat", sans-serif;
 }
 
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: 0;
+  vertical-align: baseline;
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*   reset imgs   */
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+
+p a {
+  display: inline;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+p,
+span,
+em {
+  color: inherit;
+  font-style: inherit;
+  text-decoration: none;
+}
+
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  hyphens: auto;
+  display: block;
+}
+
+/* 
+::selection{
+
+} */
+
 body {
   min-height: 100vh;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  font-size: 100%;
+  line-height: 1.4em;
+  /* hyphens: auto; */
 }
 
 #app {
   min-height: 100vh;
   width: 100vw;
-  height: 100vh;
 }
 
 /*  Permite ser entendibles para videntes   */

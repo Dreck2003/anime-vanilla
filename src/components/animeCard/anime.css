@@ -1,0 +1,26 @@
+.card_container {
+  overflow: hidden;
+  height: 300px;
+  /* padding: 1em; */
+  border: 2px solid dodgerblue;
+}
+
+.card_img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.card_img > img {
+  object-fit: cover;
+  object-position: center;
+  height: 230px;
+}
+
+.card_description > span {
+  font-size: 0.8em;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* height: 15px; */
+  white-space: nowrap;
+}

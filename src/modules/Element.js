@@ -89,14 +89,20 @@ export class BoxElement {
     if (!classNames) return;
     switch (type) {
       case "add":
-        classNames.split(" ").forEach((clase) => {
-          this.core.classList.add(clase);
-        });
+        classNames
+          .trim()
+          .split(" ")
+          .forEach((clase) => {
+            this.core.classList.add(clase);
+          });
         break;
       case "remove":
-        classNames.split(" ").forEach((clase) => {
-          this.core.classList.remove(clase);
-        });
+        classNames
+          .trim()
+          .split(" ")
+          .forEach((clase) => {
+            this.core.classList.remove(clase);
+          });
     }
   }
 
@@ -107,7 +113,6 @@ export class BoxElement {
   text(isRewrite = false, text) {
     if (isRewrite) {
       this.core.textContent = text;
-      console.log("Se reescribe", this.core.textContent);
     } else {
       this.core.textContent += text;
     }

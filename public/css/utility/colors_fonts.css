@@ -2,6 +2,13 @@
 /*       COLOR BACKGROUND      */
 /* --------------------------- */
 
+.bg-orange {
+  background-color: rgb(197, 99, 24);
+}
+.bg-green {
+  background-color: hsl(var(--clr-green));
+}
+
 .bg-dark {
   background-color: hsl(var(--clr-dark) / 1);
 }
@@ -35,6 +42,13 @@
 
 .text-white {
   color: hsl(var(--clr-white));
+}
+
+.text-green {
+  color: hsl(var(--clr-green));
+}
+.text-orange {
+  color: rgb(197, 99, 24);
 }
 
 /* --------------------------- */

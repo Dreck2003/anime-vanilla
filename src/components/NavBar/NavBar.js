@@ -6,9 +6,13 @@ const FNav = () => {
   const $wrapper = DOM.create("nav");
   $wrapper.class("add", "navbar-app grid bg-dark text-white"); //añadimos la clase navbar
   // Logo | animes | mangas
-  const $logo = DOM.create("img");
-  $logo.core.src =
-    "https://images.unsplash.com/photo-1543946207-39bd91e70ca7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
+  // const $logo = DOM.create("img");
+  // // $logo
+  // $logo.core.src =
+  //   "https://images.unsplash.com/photo-1543946207-39bd91e70ca7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387";
+
+  const $logo = DOM.link("/");
+  $logo.addChilds("inicio");
 
   const $animes = DOM.link("/mangas");
   $animes.addChilds("manga");

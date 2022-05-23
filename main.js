@@ -5,20 +5,20 @@ import "./public/css/utility/colors_fonts.css";
 import NavBar from "./src/components/NavBar/NavBar";
 import { Router } from "./src/modules/Router";
 import Home from "./src/components/Home/Home";
-
-// import { fetchAnime } from "./src/services/getAnime";
+import { initTopAnimes } from "./src/helpers/ajax/TopAnime";
 
 const $Nav = NavBar.render("#app");
 const app = document.getElementById("app");
 app.appendChild($Nav);
 
-// fetchAnime();
+initTopAnimes(); // Get top animes and mangas (length= 10)
+console.log("Se llamo a los animes!");
 
 window.addEventListener("DOMContentLoaded", () => {
   Router.routes("#app", [
     {
       url: "/",
-      component: Home.render("#app"),
+      component: Home,
     },
   ]);
 });

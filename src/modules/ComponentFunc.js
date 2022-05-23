@@ -1,4 +1,4 @@
-// import { BoxElement } from "./Element";
+import { BoxElement } from "./Element";
 
 export class Component {
   /**
@@ -21,6 +21,15 @@ export class Component {
   render(parent, props = null) {
     this.parent =
       typeof parent === "string" ? document.querySelector(parent) : parent;
+
+    if (typeof parent === "string") {
+      this.parent = document.querySelector(parent);
+    } else if (parent instanceof HTMLElement) {
+      this.parent = parent;
+    } else if (parent instanceof BoxElement) {
+      this.parent = parent.core;
+    }
+
     this.props = props;
     this.element = this.component(props);
     return this.element;
@@ -29,7 +38,9 @@ export class Component {
   changeView() {
     const newElement = this.component(this.props);
     // console.log("EL padre de este objeto es: ", this.parent);
+    console.log(this.parent);
     this.parent.replaceChild(newElement, this.element);
     this.element = newElement;
+    return this.element;
   }
 }

@@ -1,3 +1,6 @@
+import { Component } from "./ComponentFunc";
+import { BoxElement } from "./Element";
+
 class NewRouter {
   constructor() {
     this.pages = [];
@@ -37,6 +40,7 @@ class NewRouter {
   }
 
   renderTemplate() {
+    console.log("Se llamo a render Template!");
     // console.log("Los hijos son: ", this.childs);
     const path = window.location.pathname; // Este es la url que renderiza el template
     const childrenLength = this.root.children.length;
@@ -45,15 +49,13 @@ class NewRouter {
     for (let i = 0; i < pages.length; i++) {
       const { url, component } = pages[i];
       let element = null;
-      if (component.core) {
+      if (component instanceof BoxElement) {
         element = component.core;
-      } else if (component.element) {
-        element = component.element;
+      } else if (component instanceof Component) {
+        element = component.render(this.root);
       } else {
         element = component;
       }
-      // console.log("El componente es: ", element);
-
       if (url === path) {
         if (childrenLength) {
           // Si tiene hijos:
@@ -118,3 +120,7 @@ const replace = (parent, node) => {
     parent.appendChild(node);
   }
 };
+
+/**
+ *  El problema esta en que el router se queda con la copia anterior del componente
+ */
