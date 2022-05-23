@@ -4,7 +4,7 @@ import { Component } from "../../modules/ComponentFunc";
 
 const FNav = () => {
   const $wrapper = DOM.create("nav");
-  $wrapper.class("add", "navbar-app grid bg-dark text-white"); //añadimos la clase navbar
+  $wrapper.class("add", "navbar-app grid bg-white text-dark sticky"); //añadimos la clase navbar
   // Logo | animes | mangas
   // const $logo = DOM.create("img");
   // // $logo

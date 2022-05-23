@@ -22,13 +22,11 @@ const FAnime = ({ img, genres, name }) => {
   });
   $wrapper.addChilds($div);
   $wrapper.addChilds(`
-    <div class="card_description">
-      <span>${text}</span>
-    </div>
+      <span class="ellipsis">${text}</span>
   `);
   const $link = DOM.link(`/${name}`);
   $link.text(true, `${name}`);
-  $link.class("add", "text-dark fs-300");
+  $link.class("add", "anime_link ellipsis bold text-dark fs-300");
   $wrapper.addChilds($link);
 
   return $wrapper.core;

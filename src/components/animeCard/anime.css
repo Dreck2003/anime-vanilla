@@ -1,26 +1,49 @@
 .card_container {
   overflow: hidden;
-  height: 300px;
+  height: 290px;
   /* padding: 1em; */
-  border: 2px solid dodgerblue;
+  /* border: 2px solid dodgerblue; */
 }
 
 .card_img {
   width: 100%;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card_img:hover > img {
+  transform: scale(1.1);
+}
+
+.card_img:hover::after {
+  filter: blur(-1px);
+  background-color: hsl(var(--clr-dark) / 0.3);
+  content: "VER MAS";
+}
+.card_img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+  transition: background-color 500ms ease-in content 500ms ease;
+  /* background-color: rgba(224, 117, 117, 0.089); */
+  /* background-color: hsl(var(--clr-dark));  */
 }
 
 .card_img > img {
   object-fit: cover;
   object-position: center;
   height: 230px;
+  transition: transform 2s ease;
 }
 
-.card_description > span {
+.card_container > span {
   font-size: 0.8em;
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  /* height: 15px; */
-  white-space: nowrap;
+  margin-top: 10px;
+  font-weight: 500;
+  margin-bottom: -5px;
 }

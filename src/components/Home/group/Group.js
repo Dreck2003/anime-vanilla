@@ -13,7 +13,7 @@ const FGroup = ({ title, items }) => {
 
   const $Title = DOM.link(`/${title}`);
   $Title.addChilds(Title(`${title}`));
-  $Title.class("add", "bg-light bold");
+  $Title.class("add", "bg-accent bold");
 
   const $container = DOM.create("div");
   $container.class("add", "all-items");
