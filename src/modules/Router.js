@@ -20,9 +20,9 @@ class NewRouter {
   }
 
   /**
-   * @param {[{url:string,component:any,props:{}}]} pages Array with
+   * @param {[{url:string,component:any}]} pages Array with
    * ```javascript
-   *  {url:"/",component:any,props:{}}
+   *  {url:"/",component:any}
    * ```
    */
   routes(root, pages) {
@@ -47,12 +47,12 @@ class NewRouter {
     const pages = this.pages;
 
     for (let i = 0; i < pages.length; i++) {
-      const { url, component, props } = pages[i];
+      const { url, component } = pages[i];
       let element = null;
       if (component instanceof BoxElement) {
         element = component.core;
       } else if (component instanceof Component) {
-        element = component.render(this.root, props);
+        element = component.render(this.root, component.props);
       } else {
         element = component;
       }

@@ -12,7 +12,7 @@ const FAnime = ({ img, genres, name, id }) => {
   $div.class("add", "card_img");
   $div.addClick((event) => {
     event.preventDefault();
-    Router.navigate(`/${id}`);
+    Router.navigate(`/card/${id}`);
   });
 
   let text = "";
@@ -24,7 +24,7 @@ const FAnime = ({ img, genres, name, id }) => {
   $wrapper.addChilds(`
       <span class="ellipsis">${text}</span>
   `);
-  const $link = DOM.link(`/${id}`);
+  const $link = DOM.link(`/card/${id}`);
   $link.text(true, `${name}`);
   $link.class("add", "anime_link ellipsis bold text-dark fs-300");
   $wrapper.addChilds($link);

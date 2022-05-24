@@ -18,8 +18,9 @@
 
 .card_img:hover::after {
   filter: blur(-1px);
-  background-color: hsl(var(--clr-dark) / 0.3);
-  content: "SEE MORE";
+  /* background-color: hsl(var(--clr-dark) / 0.3); */
+  content: "\2192";
+  clip-path: circle(140.7% at 0 99%);
 }
 .card_img::after {
   content: "";
@@ -34,7 +35,9 @@
   justify-content: center;
   margin: auto;
   right: 0;
-  transition: background-color 500ms ease-in;
+  background-color: hsl(var(--clr-dark) / 0.5);
+  clip-path: circle(0.7% at 0 100%);
+  transition: clip-path 700ms ease-in;
   /* background-color: rgba(224, 117, 117, 0.089); */
   /* background-color: hsl(var(--clr-dark));  */
 }

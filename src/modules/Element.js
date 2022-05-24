@@ -12,7 +12,7 @@ export class BoxElement {
   }
 
   /**
-   * @param {string | BoxElement | HTMLElement} childs Received child for append to parent
+   * @param {string | BoxElement[] | HTMLElement[]} childs Received child for append to parent
    */
   addChilds(childs) {
     if (typeof childs === "string") {
@@ -38,7 +38,7 @@ export class BoxElement {
   }
 
   /**
-   * @param {any} styles Received object with `css properties`
+   * @param {{}} styles Received object with `css properties`
    */
   addStyles(styles) {
     for (let key in styles) {
@@ -93,6 +93,7 @@ export class BoxElement {
           .trim()
           .split(" ")
           .forEach((clase) => {
+            if (!clase) return;
             this.core.classList.add(clase);
           });
         break;
@@ -101,6 +102,7 @@ export class BoxElement {
           .trim()
           .split(" ")
           .forEach((clase) => {
+            if (!clase) return;
             this.core.classList.remove(clase);
           });
     }

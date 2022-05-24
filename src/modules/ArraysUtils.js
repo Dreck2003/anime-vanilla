@@ -30,7 +30,7 @@ export class Arrays {
     for (let i = 0; i < properties.length; i++) {
       if (Array.isArray(properties[i])) {
         // SI la prop es un array,vemos si la primera prop existe en el object
-        let prop = properties[i][0];
+        let prop = properties[i][0]; // ["Prop_initial","si existe","other_exist"]
         if (Object.hasOwnProperty.call(object1, prop)) {
           // Si la propiedad existe, entonces lo agregamos a newObject:
           const nuevo = this.strainer(object1[prop], properties[i].slice(1));

@@ -2,7 +2,6 @@ import { BoxElement } from "./Element";
 
 export class Component {
   /**
-   *
    * @param {Function} component function that return elementHTML
    */
   constructor(component) {
@@ -13,15 +12,11 @@ export class Component {
   }
 
   /**
-   *
    * @param {HTMLElement | string} parent HTMLElement for add
    * @param {options} props Props for state to children
    * @returns {HTMLElement} The return of the function component
    */
   render(parent, props = null) {
-    this.parent =
-      typeof parent === "string" ? document.querySelector(parent) : parent;
-
     if (typeof parent === "string") {
       this.parent = document.querySelector(parent);
     } else if (parent instanceof HTMLElement) {

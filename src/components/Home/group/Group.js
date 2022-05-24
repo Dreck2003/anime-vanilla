@@ -12,10 +12,12 @@ const FGroup = ({ title, items }) => {
   const $Title = DOM.link(`/${title}`);
   $Title.addChilds(Title(`${title}`));
   $Title.class("add", "bg-accent bold ");
+  // const $titulo=DOM.create("div")
 
   const $container = DOM.create("div");
   $container.class("add", "all-items");
 
+  $wrapper.addChilds($Title);
   Array.isArray(items) &&
     items.forEach((item) => {
       // console.log(item);
@@ -37,7 +39,6 @@ const FGroup = ({ title, items }) => {
       $wrapper.addChilds($item);
     });
 
-  $wrapper.addChilds($Title);
   return $wrapper.core;
 };
 
