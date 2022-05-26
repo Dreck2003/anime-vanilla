@@ -1,3 +1,4 @@
+import { Router } from "../modules/Router";
 export class Context {
   /**
    *
@@ -27,9 +28,17 @@ export class Context {
   }
 
   emitState() {
+    const url = window.location.pathname;
     this.suscribes.forEach((suscribe) => {
       // console.log(suscribe);
-      suscribe.changeView(suscribe.props);
+      const encountered = Router.pages.find(
+        (page) => page.component == suscribe
+      );
+
+      if (encountered && encountered.url === url) {
+        // EXiste el componente en el router
+        suscribe.changeView(suscribe.props);
+      }
     });
   }
 }

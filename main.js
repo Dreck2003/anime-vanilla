@@ -6,19 +6,37 @@ import NavBar from "./src/components/NavBar/NavBar";
 import { Router } from "./src/modules/Router";
 import Home from "./src/components/Home/Home";
 import { initTopAnimes } from "./src/helpers/ajax/TopAnime";
+import ListCards from "./src/components/listCards/ListCards";
 
 const $Nav = NavBar.render("#app");
 const app = document.getElementById("app");
-app.appendChild($Nav);
 
 initTopAnimes(); // Get top animes and mangas (length= 10)
-console.log("Se llamo a los animes!");
+app.appendChild($Nav);
 
-window.addEventListener("DOMContentLoaded", () => {
-  Router.routes("#app", [
-    {
-      url: "/",
-      component: Home,
-    },
-  ]);
-});
+const oneList = { ...ListCards };
+Object.setPrototypeOf(oneList, Object.getPrototypeOf(ListCards));
+
+const twoList = { ...ListCards };
+Object.setPrototypeOf(twoList, Object.getPrototypeOf(ListCards));
+
+// setTimeout(() => {
+Router.routes("#app", [
+  {
+    url: "/",
+    component: Home,
+  },
+  {
+    url: "/mangas",
+    component: oneList,
+    props: { title: "Mangas" },
+  },
+  {
+    url: "/animes",
+    component: twoList,
+    props: { title: "Animes" },
+  },
+]);
+
+// }, 3000);
+// });

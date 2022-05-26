@@ -13,13 +13,13 @@ const FHome = () => {
     <div>BIENVENIDOS</div>
   `);
 
-  setTimeout(() => {
-    $image.addStyles({
-      opacity: 1,
-      // filter: "blur(5px)",
-    });
-    console.log("Cambio de opacity");
-  }, 1000);
+  // setTimeout(() => {
+  //   $image.addStyles({
+  //     opacity: 1,
+  //     // filter: "blur(5px)",
+  //   });
+  //   console.log("Cambio de opacity");
+  // }, 1000);
 
   $wrapper.addChilds($image);
   $wrapper.addChilds(

@@ -6,6 +6,7 @@ export const initTopAnimes = () => {
     if (error) {
       throw new Error("Error in fetchAnime");
     }
+
     AnimeState.dispatch((state) => {
       return {
         ...state,

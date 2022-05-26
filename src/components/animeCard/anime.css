@@ -25,6 +25,7 @@
 .card_img::after {
   content: "";
   position: absolute;
+  font-size: 3em;
   top: 0;
   left: 0;
   bottom: 0;

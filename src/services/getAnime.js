@@ -14,7 +14,7 @@ export const fetchAnime = async (url, callback) => {
     // console.log(data.data);
     callback(null, data);
   } catch (error) {
-    console.log("Sucedio un error: ", error);
+    // console.log("Sucedio un error: ", error);
     callback(error, null);
   }
 };

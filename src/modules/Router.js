@@ -1,5 +1,7 @@
-import { Component } from "./ComponentFunc";
-import { BoxElement } from "./Element";
+"use strict";
+
+// import { Component } from "./ComponentFunc";
+// import { BoxElement } from "./Element";
 
 class NewRouter {
   constructor() {
@@ -20,6 +22,7 @@ class NewRouter {
   }
 
   /**
+   * @param {string | HTMLElement} root
    * @param {[{url:string,component:any}]} pages Array with
    * ```javascript
    *  {url:"/",component:any}
@@ -40,30 +43,26 @@ class NewRouter {
   }
 
   renderTemplate() {
-    console.log("Se llamo a render Template!");
-    // console.log("Los hijos son: ", this.childs);
     const path = window.location.pathname; // Este es la url que renderiza el template
+    console.log("Llamando a render template!");
     const childrenLength = this.root.children.length;
     const pages = this.pages;
-
     for (let i = 0; i < pages.length; i++) {
-      const { url, component } = pages[i];
+      const { url, component, props } = pages[i];
       let element = null;
-      if (component instanceof BoxElement) {
+      if (Object.hasOwnProperty.call(component, "core")) {
         element = component.core;
-      } else if (component instanceof Component) {
-        element = component.render(this.root, component.props);
+      } else if (Object.hasOwnProperty.call(component, "element")) {
+        element = component.render(this.root, props);
       } else {
         element = component;
       }
       if (url === path) {
         if (childrenLength) {
           // Si tiene hijos:
-          // console.log("El padre tiene hijos: ", childrenLength);
-          replace(this.root, element);
+          replace(this.root, element, this.childs.length);
         } else {
-          // console.log("El padre no tiene hijos");
-          replace(this.root, element);
+          replace(this.root, element, this.childs.length);
         }
         return true;
         // Ya se añadio el nodo hijo
@@ -87,16 +86,23 @@ class NewRouter {
       }
       return false;
     }
-    const element = findDefaultView.component.element
-      ? findDefaultView.component.element
-      : findDefaultView.component;
+    const { component, props } = findDefaultView;
+
+    let element = component;
+    if (Object.hasOwnProperty.call(component, "core")) {
+      element = component.core;
+    } else if (Object.hasOwnProperty.call(component, "element")) {
+      element = component.render(this.root, props);
+    } else {
+      element = component;
+    }
     if (childrenLength) {
-      replace(this.root, element);
+      replace(this.root, element, this.childs.length);
 
       // this.root.removeChild(this.root.children[0]);
       // this.root.appendChild(element);
     } else {
-      replace(this.root, element);
+      replace(this.root, element, this.childs.length);
 
       // this.root.appendChild(element);
     }
@@ -104,16 +110,19 @@ class NewRouter {
 }
 
 export const Router = new NewRouter();
-const replace = (parent, node) => {
-  const arrayChildren = Array.from(parent.children);
+const replace = (parent, node, childs) => {
+  const arrayChildren = Array.from(parent.children).slice(childs);
+  // debugger;
+
   if (!arrayChildren.length) {
     // Si el padre no tiene hijos entonces lo añadimos
     parent.appendChild(node);
     return;
   }
-  // console.log("Estos son los hijos: ", arrayChildren);
   const index = arrayChildren.find((child) => child == node);
-  // console.log("El hijo encontrado es: ", index);
+  arrayChildren.forEach((child) => {
+    parent.removeChild(child);
+  });
   if (index) {
     parent.replaceChild(node, index);
   } else {
