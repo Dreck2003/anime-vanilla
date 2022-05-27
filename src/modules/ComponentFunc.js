@@ -31,7 +31,7 @@ export class Component {
   }
 
   changeView() {
-    console.log("!!!!!!!!!!!!! SE LLAMO A RENDER TEMPLATE !!!!!");
+    // console.log("!!!!!!!!!!!!! SE LLAMO A RENDER TEMPLATE !!!!!  ", this);
     const newElement = this.component(this.props);
     // console.log("EL padre de este objeto es: ", this.parent);
     this.parent.replaceChild(newElement, this.element);

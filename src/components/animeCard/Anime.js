@@ -3,8 +3,9 @@ import "./anime.css";
 import { Component } from "../../modules/ComponentFunc";
 import { DOM } from "../../modules/Element";
 import { Router } from "../../modules/Router";
+import { getSingleCard } from "../../helpers/ajax/TopAnime";
 
-const FAnime = ({ img, genres, name, id }) => {
+const FAnime = ({ img, genres, name, id, type }) => {
   const $wrapper = DOM.create("li");
   $wrapper.class("add", "card_container");
   const $div = DOM.create("div");
@@ -12,7 +13,8 @@ const FAnime = ({ img, genres, name, id }) => {
   $div.class("add", "card_img");
   $div.addClick((event) => {
     event.preventDefault();
-    Router.navigate(`/card/${id}`);
+    getSingleCard(type, id);
+    Router.navigate(`/card/${name}/${type}`);
   });
 
   let text = "";
@@ -24,7 +26,12 @@ const FAnime = ({ img, genres, name, id }) => {
   $wrapper.addChilds(`
       <span class="ellipsis">${text}</span>
   `);
-  const $link = DOM.link(`/card/${id}`);
+  const $link = DOM.link(`/card/${name}/${type}`);
+  $link.addClick((event) => {
+    event.preventDefault();
+    getSingleCard(type, id);
+    Router.navigate(`/card/${name}/${type}`);
+  });
   $link.text(true, `${name}`);
   $link.class("add", "anime_link ellipsis bold text-dark fs-300");
   $wrapper.addChilds($link);

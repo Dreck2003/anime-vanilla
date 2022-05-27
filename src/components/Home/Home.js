@@ -5,6 +5,7 @@ import Group from "./group/Group";
 import { AnimeState } from "../../state/animes";
 
 const FHome = () => {
+  console.log("Se llamo a FHOME");
   const $wrapper = DOM.create("main");
   $wrapper.class("add", "home_app");
   const $image = DOM.create("div");
@@ -26,6 +27,7 @@ const FHome = () => {
     Group.render($wrapper, {
       title: "animes",
       items: AnimeState.state.topAnimes,
+      type: "anime",
     })
   );
 
@@ -33,6 +35,7 @@ const FHome = () => {
     Group.render($wrapper, {
       title: "mangas",
       items: AnimeState.state.topMangas,
+      type: "manga",
     })
   );
 

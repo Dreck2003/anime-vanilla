@@ -5,7 +5,7 @@ import { Arrays } from "../../../modules/ArraysUtils";
 
 import { Title } from "../../../helpers/functions/strings";
 
-const FGroup = ({ title, items }) => {
+const FGroup = ({ title, items, type }) => {
   const $wrapper = DOM.create("ul");
   $wrapper.class("add", "group grid");
 
@@ -35,6 +35,7 @@ const FGroup = ({ title, items }) => {
         genres: props.genres.map((gen) => gen.name),
         name: props.title_english || props.title,
         id: props.mal_id,
+        type: type,
       });
       $wrapper.addChilds($item);
     });

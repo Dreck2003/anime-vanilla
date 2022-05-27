@@ -10,7 +10,7 @@
   position: fixed;
   transition: background-color 800ms ease, padding 500ms ease;
   padding: 10px 0;
-  border: 2px solid blueviolet;
+  /* border: 2px solid blueviolet; */
 }
 
 .navbar-app {
