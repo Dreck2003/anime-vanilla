@@ -17,4 +17,7 @@ export const SingleState = new Context({
   type: "",
   url: "",
   year: "",
+  authors: [],
+  chapters: 0,
+  published: "",
 });

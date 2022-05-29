@@ -103,6 +103,10 @@
   font-size: var(--fs-200);
 }
 
+.fs-100 {
+  font-size: var(--fs-100);
+}
+
 .fs-900,
 .fs-800,
 .fs-700,

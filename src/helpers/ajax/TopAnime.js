@@ -74,6 +74,7 @@ export const getSingleCard = async (type, name) => {
     // console.log("La respuesta del single: ", res.data);
     if (res.data && Array.isArray(res.data)) {
       let prop = res.data[0];
+      console.log("La prop: ", prop);
       let data = Arrays.strainer(prop, [
         ["images", "jpg"],
         "genres",
@@ -88,12 +89,18 @@ export const getSingleCard = async (type, name) => {
         "year",
         "status",
         "popularity",
+        "authors",
+        "chapters",
+        ["published", "string"],
       ]);
+
       data = {
-        img: data.images.jpg.large_image_url || data.images.jpg.image_url,
+        img: data.images.jpg.image_url || data.images.jpg.large_image_url,
         title: data.title_english || data.title,
         synopsis: data.synopsis,
-        genres: data.genres.map((gen) => gen.name),
+        genres: Array.isArray(data.genres)
+          ? data.genres.map((gen) => gen.name)
+          : [],
         score: data.score,
         status: data.status,
         popularity: data.popularity,
@@ -105,14 +112,24 @@ export const getSingleCard = async (type, name) => {
         type: data.type,
         url: data.url,
         year: data.year,
+        authors: Array.isArray(data.authors)
+          ? data.authors.map((auth) => auth.name)
+          : [],
+        chapters: data.chapters,
+        published: data.published
+          ? data.published.string
+          : "There is no information",
       };
+      // console.log("La data es: ", data);
+
+      // console.log("Se hace el dispatch");
       SingleState.dispatch((state) => {
         return {
           ...state,
           ...data,
         };
       });
-      console.log("La data: ", data);
+      // console.log("El estado:  ", SingleState);
     } else {
       alert("Algo paso");
       console.log("DATA: ", res.data);

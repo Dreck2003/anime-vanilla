@@ -14,6 +14,8 @@
 
 .card_img:hover > img {
   transform: scale(1.1);
+  transform: scale(1.6) rotate(20deg);
+  filter: blur(3px);
 }
 
 .card_img:hover::after {

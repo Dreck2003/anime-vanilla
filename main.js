@@ -35,7 +35,7 @@ Router.routes("#app", [
     component: Single,
     callback: () => {
       const path = window.location.pathname.split("/").slice(2);
-      console.log("EL path del callback es: ", path);
+      // console.log("EL path del callback es: ", path);
       getSingleCard(path[1], path[0]);
     },
   },

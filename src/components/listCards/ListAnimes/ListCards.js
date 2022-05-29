@@ -1,4 +1,4 @@
-import "../../../../public/css/templates/listCards.component.css";
+import "../listCards.css";
 import { getChunkAnime } from "../../../services/laziLoading";
 
 import { Component } from "../../../modules/ComponentFunc";
