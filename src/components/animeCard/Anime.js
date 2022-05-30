@@ -9,7 +9,12 @@ const FAnime = ({ img, genres, name, id, type }) => {
   const $wrapper = DOM.create("li");
   $wrapper.class("add", "card_container");
   const $div = DOM.create("div");
-  $div.addChilds(`<img src="${img}" alt="${name}"/>`);
+  $div.addChilds(`
+    <img src="${img}" alt="${name}"/>
+    <div class="card_play hidden">
+      <img src="../../../public/images/bx-play-circle.svg"/>
+    </div>
+    `);
   $div.class("add", "card_img");
   $div.addClick((event) => {
     event.preventDefault();
