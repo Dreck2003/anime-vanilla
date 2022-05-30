@@ -1,0 +1,8 @@
+.info_card {
+  border: 1px solid #a9a9a98c;
+  max-width: 100vw;
+  margin-top: calc(30px + 3.1em);
+  padding: 0.4em;
+  margin-right: 1.4em;
+  margin-left: 0.6em;
+}

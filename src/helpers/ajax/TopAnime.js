@@ -2,7 +2,7 @@ import Anime from "../../components/animeCard/Anime";
 import { Arrays } from "../../modules/ArraysUtils";
 import { Router } from "../../modules/Router";
 import { fetchAnime } from "../../services/getAnime";
-import { AnimeState, SingleState } from "../../state/animes";
+import { AnimeState, MoreCards, SingleState } from "../../state/animes";
 
 export const initTopAnimes = () => {
   fetchAnime("/top/manga?limit=10", (error, data) => {
@@ -71,10 +71,21 @@ export const getSingleCard = async (type, name) => {
       return;
     }
     res = await res.json();
-    // console.log("La respuesta del single: ", res.data);
+    console.log("La respuesta del single: ", res.data);
     if (res.data && Array.isArray(res.data)) {
-      let prop = res.data[0];
-      console.log("La prop: ", prop);
+      const oneCard = res.data.findIndex((card) => {
+        console.log({
+          url: `https://api.jikan.moe/v4/${type}?q=${name}`,
+          type: card.type,
+          typeName: type,
+        });
+        return (
+          card.type === type || card.type === "Movie" || card.type == "Manga"
+        );
+      });
+      console.log("Fue encontrado?: ", oneCard);
+
+      let prop = res.data[oneCard] || res.data[0];
       let data = Arrays.strainer(prop, [
         ["images", "jpg"],
         "genres",
@@ -120,16 +131,23 @@ export const getSingleCard = async (type, name) => {
           ? data.published.string
           : "There is no information",
       };
-      // console.log("La data es: ", data);
 
-      // console.log("Se hace el dispatch");
+      // Agora debemos recortar el array para ponerlo en la seccion: `Relationates`
+
+      const arrayCards = res.data
+        .slice(0, oneCard)
+        .concat(res.data.slice(oneCard + 1));
       SingleState.dispatch((state) => {
         return {
           ...state,
           ...data,
         };
       });
-      // console.log("El estado:  ", SingleState);
+
+      MoreCards.dispatch(() => {
+        return Array.isArray(arrayCards) && arrayCards;
+      });
+      console.log("EL estado del array es: ", MoreCards.state);
     } else {
       alert("Algo paso");
       console.log("DATA: ", res.data);

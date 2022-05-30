@@ -1,6 +1,9 @@
 .card_container {
   overflow: hidden;
   height: 290px;
+  border: 1px solid #a9a9a98c;
+  box-shadow: 0px 0px 8px 1px #a9a9a98c;
+  padding: 0.3em 0.3em 0.5em 0.3em;
   /* padding: 1em; */
   /* border: 2px solid dodgerblue; */
 }
@@ -12,10 +15,13 @@
   overflow: hidden;
 }
 
+.card_img > img {
+  transition: transform 2s ease, filter 3s ease-in-out;
+}
+
 .card_img:hover > img {
-  transform: scale(1.1);
-  transform: scale(1.6) rotate(20deg);
-  filter: blur(3px);
+  transform: scale(1.5) rotate(20deg);
+  /* filter: blur(3px); */
 }
 
 .card_img:hover::after {
@@ -57,4 +63,13 @@
   margin-top: 10px;
   font-weight: 500;
   margin-bottom: -5px;
+}
+
+.anime_link {
+  transition: color 150ms ease;
+  font-weight: bold;
+}
+
+.anime_link:hover {
+  color: hsl(var(--clr-dark) / 0.8);
 }

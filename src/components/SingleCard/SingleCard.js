@@ -7,7 +7,6 @@ import { SingleState } from "../../state/animes";
 const FSingle = () => {
   const $wrapper = DOM.create("section");
   $wrapper.class("add", "singleCard_app grid");
-  // let img = SingleState.state.img.slice(0, SingleState.state.img.length);
 
   $wrapper.addChilds(`
     <a class="single_image" href="${SingleState.state.url}" target="_blank">
@@ -119,7 +118,7 @@ const FSingle = () => {
       </ul>
    </article>
   `);
-  console.log("El state: ", SingleState.state);
+  // console.log("El state: ", SingleState.state);
   // URL= https://animebee.to/teasing-master-takagi-san-season-3-dub.p32wa
 
   // URL CARD: http://localhost:3000/card/Spy%20x%20Family/manga

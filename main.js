@@ -8,7 +8,8 @@ import Home from "./src/components/Home/Home";
 import { getSingleCard, initTopAnimes } from "./src/helpers/ajax/TopAnime";
 import ListAnimes from "./src/components/listCards/ListAnimes/ListCards";
 import ListMangas from "./src/components/listCards/ListMangas/ListCards";
-import Single from "./src/components/SingleCard/SingleCard";
+// import Single from "./src/components/SingleCard/SingleCard";
+import CardInfo from "./src/components/card_info/CardInfo";
 
 const $Nav = NavBar.render("#app");
 const app = document.getElementById("app");
@@ -22,17 +23,17 @@ Router.routes("#app", [
     url: "*",
     component: Home,
   },
-  {
-    url: "/mangas",
-    component: ListMangas,
-  },
-  {
-    url: "/animes",
-    component: ListAnimes,
-  },
+  // {
+  //   url: "/mangas",
+  //   component: ListMangas,
+  // },
+  // {
+  //   url: "/animes",
+  //   component: ListAnimes,
+  // },
   {
     url: "/card/{id}/{type}",
-    component: Single,
+    component: CardInfo,
     callback: () => {
       const path = window.location.pathname.split("/").slice(2);
       // console.log("EL path del callback es: ", path);

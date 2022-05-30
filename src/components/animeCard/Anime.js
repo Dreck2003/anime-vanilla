@@ -13,12 +13,13 @@ const FAnime = ({ img, genres, name, id, type }) => {
   $div.class("add", "card_img");
   $div.addClick((event) => {
     event.preventDefault();
-    getSingleCard(type, id);
+    console.log("El id del card es: ", { id, name, type });
+    getSingleCard(type, name);
     Router.navigate(`/card/${name}/${type}`);
   });
 
   let text = "";
-  genres = genres.slice(0, 3);
+  genres = genres.slice(0, 2);
   genres.map((gen) => {
     text += ` ${gen}`;
   });
@@ -29,7 +30,8 @@ const FAnime = ({ img, genres, name, id, type }) => {
   const $link = DOM.link(`/card/${name}/${type}`);
   $link.addClick((event) => {
     event.preventDefault();
-    getSingleCard(type, id);
+    console.log("El id del card es: ", { id, name, type });
+    getSingleCard(type, name);
     Router.navigate(`/card/${name}/${type}`);
   });
   $link.text(true, `${name}`);

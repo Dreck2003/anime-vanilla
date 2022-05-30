@@ -44,7 +44,6 @@ class NewRouter {
 
   renderTemplate() {
     const path = window.location.pathname; // Este es la url que renderiza el template
-    // console.log("Llamando a render template!");
     const childrenLength = this.root.children.length;
     const pages = this.pages;
     for (let i = 0; i < pages.length; i++) {
@@ -58,16 +57,12 @@ class NewRouter {
         if (path.startsWith(slicePath)) {
           // Si la url comienza con el corte del path: "../card/{id}".startWith("/card/");
           // Ejecutamos el callback si existe:
-          // console.log(("La url matchea con:  ", { path, slicePath }));
           callback && callback();
 
           // Verificamos si el callback cambio la url
           let isUrlCahnge = window.location.pathname;
           // Si es diferente ejecutamos recursivamente renderTemplate()
           if (isUrlCahnge !== path) {
-            console.log(
-              "El callback cambio la url, entonces volvemos a ejecutar el render"
-            );
             this.renderTemplate();
             return;
           }
@@ -155,15 +150,10 @@ const replace = (parent, node, childs) => {
     return;
   }
   const index = arrayChildren.find((child) => {
-    console.log(
-      "Comparamos el nodo a añadir y a los hijos despues de los añadidos: ",
-      { child, node }
-    );
     return child == node;
   });
   // debugger;
   arrayChildren.forEach((child) => {
-    console.log("Se borran el hijos: ", child);
     parent.removeChild(child);
   });
   if (index) {

@@ -3,6 +3,10 @@ import { Context } from "../modules/Context";
 export const AnimeState = new Context({
   topAnimes: [],
   topMangas: [],
+  seeState: {
+    anime: [],
+    manga: [],
+  },
 });
 
 export const SingleState = new Context({
@@ -21,3 +25,5 @@ export const SingleState = new Context({
   chapters: 0,
   published: "",
 });
+
+export const MoreCards = new Context([]);
