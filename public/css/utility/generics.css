@@ -37,3 +37,29 @@
   justify-content: center;
   align-items: center;
 }
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 2px solid red;
+  animation: loop 1s linear infinite;
+  border-radius: 50%;
+  display: inline;
+  border-left-color: #f7b0b0c1;
+  border-right-color: #f7b0b0c1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+@keyframes loop {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

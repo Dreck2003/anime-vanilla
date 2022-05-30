@@ -1,8 +1,31 @@
 .info_card {
-  border: 1px solid #a9a9a98c;
+  /* border: 1px solid #a9a9a98c; */
   max-width: 100vw;
   margin-top: calc(30px + 3.1em);
   padding: 0.4em;
   margin-right: 1.4em;
   margin-left: 0.6em;
+}
+.info_card hr {
+  /* border: 1px solid #a9a9a98c; */
+  background-color: #a9a9a930;
+  height: 1px;
+  margin-bottom: 1em;
+}
+
+.info_card h3 {
+  margin-bottom: 0.5em;
+}
+
+.info_card .info_more {
+  /* border: 2px dashed blueviolet; */
+  margin-top: 1.3em;
+}
+
+.info_card .info_cards {
+  /* background-color: rebeccapurple; */
+  color: white;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  width: 100%;
+  height: 100%;
 }

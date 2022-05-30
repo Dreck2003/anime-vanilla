@@ -3,6 +3,8 @@ import { getChunkAnime } from "../../../services/laziLoading";
 
 import { Component } from "../../../modules/ComponentFunc";
 import { DOM } from "../../../modules/Element";
+import { AnimeState } from "../../../state/animes";
+import { appendCard } from "../../../helpers/ajax/TopAnime";
 
 // Instanciamos un obervador:
 const FListCards = () => {
@@ -15,7 +17,8 @@ const FListCards = () => {
   const $containerCards = DOM.create("section");
   $containerCards.class("add", "grid");
   $containerCards.text(true, "Animes");
-  getChunkAnime($containerCards.core, 1, "anime");
+  appendCard($containerCards.core, AnimeState.state.seeState.anime);
+  getChunkAnime($containerCards.core, 2, "anime");
 
   /* Container with title  */
   $wrapper.addChilds([$title, $containerCards]);
@@ -23,5 +26,6 @@ const FListCards = () => {
 };
 
 const ListCardsAnimes = new Component(FListCards);
+AnimeState.suscribe(ListCardsAnimes);
 
 export default ListCardsAnimes;

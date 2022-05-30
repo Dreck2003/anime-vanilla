@@ -1,8 +1,8 @@
 import "./single.css";
 
-import { Component } from "../../modules/ComponentFunc";
-import { DOM } from "../../modules/Element";
-import { SingleState } from "../../state/animes";
+import { Component } from "../../../modules/ComponentFunc";
+import { DOM } from "../../../modules/Element";
+import { SingleState } from "../../../state/animes";
 
 const FSingle = () => {
   const $wrapper = DOM.create("section");

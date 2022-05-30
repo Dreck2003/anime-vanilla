@@ -18,6 +18,12 @@ const FGroup = ({ title, items, type }) => {
   $container.class("add", "all-items");
 
   $wrapper.addChilds($Title);
+
+  Array.isArray(items) &&
+    !items.length &&
+    $wrapper.addChilds("<i class='spinner'></i>");
+  console.log("los items: ", items);
+  console.log("Es in array?");
   Array.isArray(items) &&
     items.forEach((item) => {
       // console.log(item);
